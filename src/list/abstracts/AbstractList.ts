@@ -2,18 +2,17 @@ import InvalidIndexException from "../exceptions/InvalidIndexException";
 import OutofBoundException from "../exceptions/OutofBoundException";
 import IList from "../interfaces/IList";
 
-class AbstractList extends IList {
+class AbstractList<Type> implements IList<Type> {
 
-    list = [];
-    size = 0;
-    maxLength = null;
+    list:Array<Type> = [];
+    size:number = 0;
+    maxLength?:number;
 
-    constructor(maxLength = null) {
-        super();
+    constructor(maxLength?:number) {
         this.maxLength = maxLength;
     }
 
-    add(value, index = null){
+    add(value:Type, index:number): Boolean{
         try{
             if(this.size == this.maxLength){
                 throw new OutofBoundException("Out of bound");
@@ -34,19 +33,13 @@ class AbstractList extends IList {
                 return false;
             }
         }
+        return true;
     }
 
-    get() {
+    get(): Array<Type> {
         return this.list;
     }
 
-    addAll(collection) {
-        this._WARNING('addAll');
-    }
-    
-    _WARNING(fName = 'unknown method') {
-        console.warn('WARNING! Function "' + fName + '" is not overridden in ' + this.constructor.name);
-    }   
 }
 
 export default AbstractList;
