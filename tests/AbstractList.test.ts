@@ -3,14 +3,14 @@ import InvalidIndexException from "../src/list/exceptions/InvalidIndexException"
 import OutofBoundException from "../src/list/exceptions/OutofBoundException";
 
 test('Add value to list', () => {
-    let list = new AbstractList();
+    let list = new AbstractList<number>();
     list.add(1);
     list.add(2);
     expect(list.get()).toStrictEqual([1,2]);
 });
 
 test('Add value at specific index within boundary', () => {
-    let list = new AbstractList();
+    let list = new AbstractList<number>();
     list.add(1);
     list.add(2);
     list.add(3);
@@ -19,7 +19,7 @@ test('Add value at specific index within boundary', () => {
 });
 
 test('Add value at specific index outside boundary', () => {
-    let list = new AbstractList();
+    let list = new AbstractList<number>();
     list.add(1);
     list.add(2);
     list.add(3);
@@ -28,12 +28,12 @@ test('Add value at specific index outside boundary', () => {
 });
 
 test('Invalid index exeption : not numeric index', () => {
-    let list = new AbstractList();
+    let list = new AbstractList<number>();
     expect(() => list.add(3,"text")).toThrow(InvalidIndexException);
 });
 
 test('Out of bound exception', () => {
-    let list = new AbstractList(3);
+    let list = new AbstractList<number>(3);
     list.add(1);
     list.add(2);
     list.add(3);
