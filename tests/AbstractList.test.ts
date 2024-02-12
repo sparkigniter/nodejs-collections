@@ -3,7 +3,7 @@ import InvalidIndexException from "../src/list/exceptions/InvalidIndexException"
 import OutofBoundException from "../src/list/exceptions/OutofBoundException";
 
 test('Add value to list', () => {
-    let list = new AbstractList<number>();
+    let list:AbstractList<number> = new AbstractList<number>();
     list.add(1);
     list.add(2);
     expect(list.get()).toStrictEqual([1,2]);

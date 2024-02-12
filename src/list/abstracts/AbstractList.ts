@@ -12,7 +12,7 @@ class AbstractList<Type> implements IList<Type> {
         this.maxLength = maxLength;
     }
 
-    add(value:Type, index:number): Boolean{
+    add(value:Type, index?:number): Boolean{
         try{
             if(this.size == this.maxLength){
                 throw new OutofBoundException("Out of bound");
