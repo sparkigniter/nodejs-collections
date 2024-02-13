@@ -9,6 +9,11 @@ test('Add value to list', () => {
     expect(list.get()).toStrictEqual([1,2]);
 });
 
+test('Initialized array with specific size', () => {
+    let list:AbstractList<number> = new AbstractList<number>(5, 0);
+    expect(list.getSize()).toBe(5);
+});
+
 test('Add value at specific index within boundary', () => {
     let list = new AbstractList<number>();
     list.add(1);
@@ -29,7 +34,7 @@ test('Add value at specific index outside boundary', () => {
 
 test('Invalid index exeption : not numeric index', () => {
     let list = new AbstractList<number>();
-    expect(() => list.add(3,"text")).toThrow(InvalidIndexException);
+    expect(() => list.add(3,4.7)).toThrow(InvalidIndexException);
 });
 
 test('Out of bound exception', () => {

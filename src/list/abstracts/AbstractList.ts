@@ -4,12 +4,16 @@ import IList from "../interfaces/IList";
 
 class AbstractList<Type> implements IList<Type> {
 
-    list:Array<Type> = [];
-    size:number = 0;
-    maxLength?:number;
+    private list:Array<Type>;
+    private size:number = 0;
+    private maxLength?:number;
 
-    constructor(maxLength?:number) {
+    constructor(maxLength?:number, fill?:Type) {
         this.maxLength = maxLength;
+        (maxLength && Number.isInteger(maxLength)) ?  this.list = new Array(maxLength) : this.list = new Array();
+        if(fill){
+            this.list.fill(fill);
+        }
     }
 
     add(value:Type, index?:number): Boolean{
@@ -24,7 +28,7 @@ class AbstractList<Type> implements IList<Type> {
                 this.list.splice(index, 0, value);
                 this.size++;
             } else {
-                throw new InvalidIndexException("Index is not numeric");
+                throw new InvalidIndexException("Invalid index");
             }
         } catch(e) { 
             if (e instanceof InvalidIndexException || e instanceof OutofBoundException){
@@ -38,6 +42,10 @@ class AbstractList<Type> implements IList<Type> {
 
     get(): Array<Type> {
         return this.list;
+    }
+
+    getSize(): number {
+        return this.list.length;
     }
 
 }
