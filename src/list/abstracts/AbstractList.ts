@@ -1,5 +1,6 @@
 import InvalidIndexException from "../exceptions/InvalidIndexException";
 import OutofBoundException from "../exceptions/OutofBoundException";
+import UnsupportedOperationException from "../exceptions/UnsupportedOperationException";
 import IList from "../interfaces/IList";
 
 class AbstractList<Type> implements IList<Type> {
@@ -38,6 +39,14 @@ class AbstractList<Type> implements IList<Type> {
             }
         }
         return true;
+    }
+
+    addAll(collection: AbstractList<Type>): Boolean {
+       if(collection.getSize() <= 0) {
+        throw new UnsupportedOperationException("Unsupported");
+       }
+       this.list = this.list.concat(collection.list);
+       return true; 
     }
 
     get(): Array<Type> {
