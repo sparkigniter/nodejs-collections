@@ -3,7 +3,7 @@ import ICollection from "../../base/interfaces/ICollection";
 interface IList<Type> extends ICollection<Type> {
 
     add(value: Type, index?: number): Boolean;
-
+    addAll(collection: IList<Type>): Boolean;
     addAll(collection: Type): Boolean;
 }
 

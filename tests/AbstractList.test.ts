@@ -66,3 +66,13 @@ test('Addall: Add one collection to other', () => {
     list.addAll(list1);
     expect(list.get()).toStrictEqual([1,2,3,4,5]);
 });
+
+test("Remove: Remove one element", () => {
+    let list:AbstractList<number> = new AbstractList<number>()
+    list.add(1)
+    list.add(2)
+    list.add(3)
+    list.add(4)
+    list.remove(1)
+    expect(list.get()).toStrictEqual([1,3,4]);
+})

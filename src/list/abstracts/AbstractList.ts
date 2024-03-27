@@ -49,6 +49,15 @@ class AbstractList<Type> implements IList<Type> {
        return true; 
     }
 
+    remove(index?:number): Boolean {
+        if(index) {
+            this.list.splice(index, 1);
+            return true
+        }
+        this.list.pop()
+        return true
+    }
+
     get(): Array<Type> {
         return this.list;
     }
