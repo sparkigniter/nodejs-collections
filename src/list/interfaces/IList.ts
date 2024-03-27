@@ -4,7 +4,7 @@ interface IList<Type> extends ICollection<Type> {
 
     add(value: Type, index?: number): Boolean;
 
-    addAll(collection: Type): Boolean;
+    addAll(collection: IList<Type>): Boolean;
 }
 
 export default IList;
