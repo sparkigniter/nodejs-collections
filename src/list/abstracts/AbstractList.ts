@@ -47,7 +47,6 @@ class AbstractList<Type> implements IList<Type> {
        }
        this.list = this.list.concat(collection.list);
        return true; 
-    
     }
 
     remove(index?:number): Boolean {
